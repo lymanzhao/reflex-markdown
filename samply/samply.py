@@ -1,8 +1,8 @@
 import reflex as rx
-from components.markdown import markdown
+from components.markdown import Markdown
 
 # 示例 Markdown 文本
-sample_markdown = """
+sample_markdown = f"""
 # 标题
 
 这是一段 **粗体文本** 和 *斜体文本*。
@@ -12,10 +12,13 @@ sample_markdown = """
 - 项目 2
 - 项目 3
 
-## 代码示例
+<thinking>思考</thinking>
+
+
 ```python
 def hello_world():
     print("Hello, world!")
+```
 """
 
 class State(rx.State):
@@ -24,8 +27,8 @@ class State(rx.State):
 def index():
     return rx.box(
         rx.heading("Markdown 示例 测试", size="1"),
-        rx.divider(),
-        markdown(
+        # rx.divider(),
+        Markdown(
             content=sample_markdown,
             class_name="markdown-content"
         ),
