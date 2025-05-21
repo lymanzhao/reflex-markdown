@@ -1,5 +1,5 @@
 [project]
-name = "reflex-react-markdown"
+name = "reflex-markdown"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"

@@ -32,6 +32,41 @@ def Markdown(content: str, **props) -> rx.Component:
         padding: 0.2rem 0.4rem;
         border-radius: var(--radius-1);
     }}
+    #{container_id} h1 {{
+        font-size: 1.8rem;
+    }}
+    #{container_id} h2 {{
+        font-size: 1.5rem;
+    }}
+    #{container_id} h3 {{
+        font-size: 1.2rem;
+    }}
+    #{container_id} h4 {{
+        font-size: 1rem;
+    }}
+    #{container_id} hr {{
+        border: none;
+        height: 1px;
+        background-color: var(--accent-a5);
+        margin: 1rem 0;
+    }}
+    #{container_id} p {{
+        margin: 0.5rem 0;
+        line-height: 1.5;
+    }}
+    #{container_id} table {{
+        border-collapse: collapse;
+        width: 100%;
+        margin: 1rem 0;
+    }}
+    #{container_id} th, #{container_id} td {{
+        border: 1px solid var(--accent-a5);
+        padding: 0.5rem;
+        text-align: left;
+    }}
+    #{container_id} th {{
+        background-color: var(--accent-a2);
+    }}
     """
     
     return rx.box(
