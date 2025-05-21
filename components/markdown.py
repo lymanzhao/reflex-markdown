@@ -23,6 +23,10 @@ def Markdown(content: str, **props) -> rx.Component:
         border-radius: var(--radius-2);
         overflow-x: auto;
     }}
+    #{container_id} ul {{
+        list-style-type: disc;
+        padding-left: 2em;
+    }}
     #{container_id} code {{
         background-color: transparent;
         padding: 0.2rem 0.4rem;
