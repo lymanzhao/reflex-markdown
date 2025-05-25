@@ -1,13 +1,13 @@
 import reflex as rx
-from components.simple_markdown import SimpleMarkdown
+from components.improved_markdown import ImprovedMarkdown
 
-class State(rx.State):
-    """应用状态"""
-    markdown_input: str = """# Reflex Markdown 组件测试
+class TestState(rx.State):
+    """测试应用状态"""
+    markdown_input: str = """# 欢迎使用 Markdown 测试器
 
 ## 功能特性
 - **实时预览**: 输入内容立即渲染
-- **错误处理**: 显示加载状态和错误信息  
+- **错误处理**: 显示加载状态和错误信息
 - **样式优化**: 美观的默认样式
 
 ## 代码示例
@@ -52,8 +52,8 @@ def hello_world():
         """更新markdown内容"""
         self.markdown_input = value
 
-def index():
-    """主页面 - 交互式markdown测试器"""
+def test_page():
+    """测试页面"""
     return rx.container(
         rx.heading("Reflex Markdown 组件测试", size="8", margin_bottom="1rem"),
         
@@ -68,8 +68,8 @@ def index():
             rx.box(
                 rx.heading("输入区域", size="4", margin_bottom="0.5rem"),
                 rx.text_area(
-                    value=State.markdown_input,
-                    on_change=State.update_markdown,
+                    value=TestState.markdown_input,
+                    on_change=TestState.update_markdown,
                     placeholder="在这里输入 Markdown 文本...",
                     height="500px",
                     width="100%",
@@ -92,8 +92,8 @@ def index():
             rx.box(
                 rx.heading("预览区域", size="4", margin_bottom="0.5rem"),
                 rx.box(
-                    SimpleMarkdown(
-                        content=State.markdown_input,
+                    ImprovedMarkdown(
+                        content=TestState.markdown_input,
                         padding="1rem",
                         border="1px solid var(--gray-4)",
                         border_radius="8px",
@@ -135,8 +135,8 @@ def index():
         padding="2rem"
     )
 
-def simple_test():
-    """简单测试页面"""
+def simple_test_page():
+    """简单测试页面 - 用于调试"""
     test_content = """# 简单测试
 
 这是一个**简单的测试**。
@@ -147,16 +147,12 @@ def simple_test():
 ```python
 print("Hello World")
 ```
-
-<thinking>
-这是一个思考块
-</thinking>
 """
     
     return rx.container(
         rx.heading("简单 Markdown 测试", size="6", margin_bottom="1rem"),
         rx.text("这是一个简单的静态测试页面", margin_bottom="1rem"),
-        SimpleMarkdown(
+        ImprovedMarkdown(
             content=test_content,
             padding="1rem",
             border="1px solid #ccc",
@@ -167,6 +163,7 @@ print("Hello World")
         padding="2rem"
     )
 
+# 创建应用
 app = rx.App(
     theme=rx.theme(
         appearance="light",
@@ -176,5 +173,6 @@ app = rx.App(
     )
 )
 
-app.add_page(index, route="/", title="Markdown 测试器")
-app.add_page(simple_test, route="/simple", title="简单测试")
+# 添加页面
+app.add_page(test_page, route="/", title="Markdown 测试器")
+app.add_page(simple_test_page, route="/simple", title="简单测试")
